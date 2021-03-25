@@ -16,12 +16,12 @@
 		<tr>
 			<td colspan="15" align="right" style="padding: 5px 20px 10px;">
 				<c:if test="${sessionScope.cookNo==null || sessionScope.cookNo==0 }">
-					<a href="${path }/member_servlet/login.do">로그인</a>&nbsp;&nbsp;
-					<a href="${path }/member_servlet/chuga.do">회원가입</a>
+					<a href="${path }/member_servlet/indexL.do">로그인</a>&nbsp;&nbsp;
+					<a href="${path }/member_servlet/indexC.do">회원가입</a>
 				</c:if> <c:if
 					test="${sessionScope.cookNo != null && sessionScope.cookNo > 0 }">
 	${sessionScope.cookName } 님 환영합니다.
-            <a href="${path}/member_servlet/modify_passwdChk.do?id=${sessionScope.cookId}">[회원정보 수정]</a>
+            <a href="${path}/member_servlet/indexM.do">[회원정보 수정]</a>
             [회원탈퇴]
             <a href="${path }/member_servlet/logout.do">[로그아웃]</a>
 				</c:if>

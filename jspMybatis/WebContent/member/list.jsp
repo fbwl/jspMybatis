@@ -140,7 +140,7 @@
 <tr>
 	<td colspan="70" height="50" align="right">
 		<button type="button" onclick="suntaek_all();">전체목록</button>
-		<button type="button" onclick="suntaek_proc('chuga','1','');">회원등록</button>
+		<button type="button" onclick="suntaek_proc('chuga','','');">회원등록</button>
 	</td>
 </tr>
 </table>

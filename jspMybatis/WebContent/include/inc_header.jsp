@@ -7,7 +7,7 @@
 <c:set var="url" value="${pageContext.request.requestURL }" />
 <c:set var="uri" value="${pageContext.request.requestURI }" />
 <%
-	response.setHeader("Chche-Control", "no-cache");
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	response.setHeader("Pragma", "no-cache");
 	response.setDateHeader("Expires", 0);
 %>

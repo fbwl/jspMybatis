@@ -90,8 +90,16 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("menu_gubun", "member_index");
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
+		} else if (url.indexOf("indexL.do") != -1) {
+			request.setAttribute("menu_gubun", "member_login2");
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
+		} else if (url.indexOf("indexC.do") != -1) {
+			request.setAttribute("menu_gubun", "member_chuga2");
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
 		} else if (url.indexOf("list.do") != -1) {
-			int pageSize = 10;
+			int pageSize = 5;
 			int blockSize = 10;
 			int totalRecord = dao.getTotalRecord(search_option, search_data);
 			int[] pagerArray = util.pager(pageSize, blockSize, totalRecord, pageNumber);
@@ -124,6 +132,7 @@ public class MemberController extends HttpServlet {
 			rd.forward(request, response);
 		} else if (url.indexOf("chuga.do") != -1) {
 			request.setAttribute("menu_gubun", "member_chuga");
+			request.setAttribute("proc", "chuga");
 			page = "/member/chuga.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
@@ -158,7 +167,8 @@ public class MemberController extends HttpServlet {
 			} else {
 				System.out.println("gender X");
 			}
-			int bornYear = Integer.parseInt(request.getParameter("bornYear"));
+			temp = request.getParameter("bornYear");
+			int bornYear = util.numberCheck(temp, 0);
 			String postcode = request.getParameter("postcode");
 			String address = request.getParameter("address");
 			String detailAddress = request.getParameter("detailAddress");
@@ -182,6 +192,8 @@ public class MemberController extends HttpServlet {
 			response.sendRedirect(temp);
 		} else if (url.indexOf("login.do") != -1) {
 			request.setAttribute("menu_gubun", "member_login");
+			request.setAttribute("proc", "login");
+			page = "/member/login.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		} else if (url.indexOf("loginProc.do") != -1) {
@@ -231,10 +243,11 @@ public class MemberController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		} else if (url.indexOf("modify.do") != -1) {
+			request.setAttribute("proc", "modify");
 			String passwd = request.getParameter("passwd");
 			MemberDTO resultDto = dao.getModify(no, passwd);
 //			MemberDTO resultDto = dao.getSelectOne(no);
-			if (resultDto.getNo() == 0) {
+			if (resultDto == null) {
 				temp = path + "/member_servlet/list.do";
 				response.sendRedirect(temp);
 			} else {
@@ -275,6 +288,7 @@ public class MemberController extends HttpServlet {
 				response.sendRedirect(temp);
 			}
 		} else if (url.indexOf("id_check.do") != -1) {
+			request.setAttribute("proc", "id_check");
 			String id = request.getParameter("id");
 			String result = dao.getIdCheck(id);
 			if (result == null || result.equals("")) {
@@ -298,6 +312,13 @@ public class MemberController extends HttpServlet {
 		} else if (url.indexOf("delProc.do") != -1) {
 			String passwd = request.getParameter("passwd");
 			int result = dao.setDel(no, passwd);
+			if (result == 0) {
+				temp = path + "/member_servlet/del_passwdChk.do?no"+no;
+				response.sendRedirect(temp);
+			}else {
+				temp = path + "/member_servlet/list.do";
+				response.sendRedirect(temp);
+			}
 		}
 	}
 

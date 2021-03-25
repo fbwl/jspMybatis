@@ -76,7 +76,7 @@ function check_answer(value1, value2) {
 		$("#mun4" + value1).text('❹')
 	}
 
-	if (value1 == '') {
+//	if (value1 == '') {
 		var counter = parseInt($("#span_list_size").text());
 		var msg = '';
 		for (var i = counter; i > 0; i--) {
@@ -91,7 +91,7 @@ function check_answer(value1, value2) {
 			}
 		}
 		$("#span_answer_total").text(msg);
-	}
+//	}
 }
 
 function goPage(value1) {

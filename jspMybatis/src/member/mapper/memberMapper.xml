@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 	</update>
 	
 	<delete id="setDel">
-		delete from member where no=#{dto.no} and passwd=#{dto.passwd}
+		delete from member where no=#{no} and passwd=#{passwd}
 	</delete>
 
 	<select id="getList" resultType="member.model.dto.MemberDTO">

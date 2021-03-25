@@ -65,7 +65,7 @@
 		var result = $("#result").val();
 		if (id==result && id.length>0 && result.length) {
 			var id = document.getElementById("id").value;
-			opener.document.getElementById("id").value=id;
+			opener.document.getElementById("id_chuga").value=id;
 			window.close();
 		} else {
 			alert('다시 검색');
