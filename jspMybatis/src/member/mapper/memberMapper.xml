@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<sql id="search">
+		<choose>
+			<when test="search_option == 'id_name_gender' ">
+				and (id like '%' || #{search_data} || '%' or
+				name like '%' || #{search_data} || '%' or
+				gender like '%' ||
+				#{search_data} || '%')
+			</when>
+			<when
+				test="search_option != null and search_option !='' and search_data != null and search_data != '' ">
+				and (${search_option} like '%' || #{search_data} || '%')
+			</when>
+			<otherwise>
+				and no > '0'
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<insert id="setInsert">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select seq_member.nextval from dual
+		</selectKey>
+		insert into member (no, id, passwd, name, gender, bornYear, postcode, address, detailAddress, extraAddress, regiDate, email) 
+		values (#{no}, #{dto.id}, #{dto.passwd}, #{dto.name}, #{dto.gender}, #{dto.bornYear}, #{dto.postcode}, #{dto.address}, #{dto.detailAddress}, #{dto.extraAddress}, CURRENT_TIMESTAMP, #{dto.email})
+	</insert>
+	
+	<update id="setModify">
+		update member set passwd=#{dto.passwd}, name=#{dto.name}, gender=#{dto.gender}, postcode=#{dto.postcode}, address=#{dto.address}, detailAddress=#{dto.detailAddress}, extraAddress=#{dto.extraAddress}, email=#{dto.email} where id=#{dto.id}
+	</update>
+	
+	<delete id="setDel">
+		delete from member where no=#{dto.no} and passwd=#{dto.passwd}
+	</delete>
+
+	<select id="getList" resultType="member.model.dto.MemberDTO">
+		select * from (select A.*, Rownum rnum from (
+		select * from
+		${tableName01} where 1=1
+		<include refid="search"></include>
+		<![CDATA[order by no desc ) A) where rnum >= #{startRecord} and rnum <= ${lastRecord}]]>
+
+	</select>
+
+	<select id="getTotalRecord" resultType="int">
+		select count(*) from ${tableName01} where 1=1
+		<include refid="search"></include>
+	</select>
+	
+	<select id="getIdCheck" resultType="String">
+		select id from member where id=#{id}
+	</select>
+	
+	<select id="getModify" resultType="member.model.dto.MemberDTO">
+		select * from member where no=#{no} and passwd=#{passwd}
+	</select>
+	
+	<select id="getSelectOne" resultType="member.model.dto.MemberDTO">
+		select * from member where no=#{no}
+	</select>
+	
+	<select id="login" resultType="member.model.dto.MemberDTO">
+		select * from member where id=#{id} and passwd=#{passwd}
+	</select>
+	
+</mapper>
