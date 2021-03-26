@@ -78,6 +78,16 @@
 				$("#board").css("background-color", "silver");
 			</script>
 		</c:when>
+		<c:when test="${gubun=='product' }">
+			<script>
+				$("#product").css("background-color", "silver");
+			</script>
+		</c:when>
+		<c:when test="${gubun=='mall' }">
+			<script>
+				$("#mall").css("background-color", "silver");
+			</script>
+		</c:when>
 		<c:when test="${gubun=='chart' }">
 			<script>
 				$("#chart").css("background-color", "silver");

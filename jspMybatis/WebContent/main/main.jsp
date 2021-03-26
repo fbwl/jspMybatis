@@ -25,6 +25,7 @@
 	            <c:when test="${menu_gubun=='member_index' }"><jsp:include page="../member/index.jsp"/></c:when>
 	            <c:when test="${menu_gubun=='member_login2' }"><jsp:include page="../member/index.jsp"/></c:when>
 	            <c:when test="${menu_gubun=='member_chuga2' }"><jsp:include page="../member/index.jsp"/></c:when>
+	            <c:when test="${menu_gubun=='member_modify2' }"><jsp:include page="../member/index.jsp"/></c:when>
 	            <c:when test="${menu_gubun=='memo_index' }"><jsp:include page="../memo/index.jsp"/></c:when>
 	            <c:when test="${menu_gubun=='guestbook_index' }"><jsp:include page="../guestbook/index.jsp"/></c:when>
 	            <c:when test="${menu_gubun=='survey_index' }"><jsp:include page="../survey/index.jsp"/></c:when>

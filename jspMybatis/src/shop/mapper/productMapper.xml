@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+	<sql id="search">
+		<choose>
+			<when test="search_option == 'name_description' ">
+				and (name like '%' || #{search_data} || '%' or
+				description like '%' || #{search_data} || '%')
+			</when>
+			<when
+				test="search_option != null and search_option !='' and search_data != null and search_data != '' ">
+				and (${search_option} like '%' || #{search_data} || '%')
+			</when>
+			<otherwise>
+				and no > '0'
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<insert id="setInsert">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select seq_product.nextval from dual
+		</selectKey>
+		insert into ${tableName01} (no, name, price, description, product_img, regi_date) 
+		values (#{no}, #{dto.name}, #{dto.price}, #{dto.description}, #{dto.product_img}, CURRENT_TIMESTAMP)
+	</insert>
+	
+	<select id="getList" resultType="shop.model.dto.ProductDTO">
+		select * from (select A.*, Rownum rnum from (
+		select * from
+		${tableName01} where 1=1
+		<include refid="search"></include>
+		<![CDATA[order by no desc ) A) where rnum >= #{startRecord} and rnum <= ${lastRecord}]]>
+
+	</select>
+
+	<select id="getTotalRecord" resultType="int">
+		select count(*) from ${tableName01} where 1=1
+		<include refid="search"></include>
+	</select>
+	
+	<update id="setModify">
+		update ${tableName01} set name=#{dto.name}, price=#{dto.price}, description=#{dto.description}, product_img=#{dto.product_img} where no=#{dto.no}
+	</update>
+	
+	<select id="getSelectOne" resultType="shop.model.dto.ProductDTO">
+		select * from ${tableName01} where no=#{no}
+	</select>
+	
+	<delete id="setDel">
+		delete from ${tableName01} where no=#{no}
+	</delete>
+	
+</mapper>

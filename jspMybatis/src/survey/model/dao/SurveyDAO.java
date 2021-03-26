@@ -87,8 +87,12 @@ public class SurveyDAO {
 	}
 
 	public SurveyDTO getView(int no) {
+		Map<String, String> map = new HashMap<>();
+		map.put("tableName01", tableName01);
+		map.put("no", no+"");
+		
 		SqlSession session = MybatisManager.getInstance().openSession();
-		SurveyDTO dto = session.selectOne("survey.getView", no);
+		SurveyDTO dto = session.selectOne("survey.getView", map);
 		session.close();
 		return dto;
 	}

@@ -1,8 +1,9 @@
-package controller.shop;
+package shop.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -12,11 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import common.UtilProduct;
-import model.dao.shop.CartDAO;
-import model.dao.shop.ProductDAO;
-import model.dto.shop.CartDTO;
-import model.dto.shop.ProductDTO;
+import shop.model.dao.CartDAO;
+import shop.model.dao.ProductDAO;
+import shop.model.dto.CartDTO;
+import shop.model.dto.ProductDTO;
+import shop.util.UtilProduct;
+
 
 @WebServlet("/mall_servlet/*")
 public class MallController extends HttpServlet {
@@ -35,16 +37,16 @@ public class MallController extends HttpServlet {
 	protected void doProc(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		UtilProduct utilProduct = new UtilProduct();
+		UtilProduct util = new UtilProduct();
 
-		int[] nalja = utilProduct.getDateTime();
+		int[] nalja = util.getDateTime();
 		Map<String, Integer> naljaMap = new HashMap<String, Integer>();
 		naljaMap.put("now_y", nalja[0]);
 		naljaMap.put("now_m", nalja[1]);
 		naljaMap.put("now_d", nalja[2]);
 		request.setAttribute("naljaMap", naljaMap);
 
-		String serverInfo[] = utilProduct.getServerInfo(request);
+		String serverInfo[] = util.getServerInfo(request);
 		String refer = serverInfo[0];
 		String path = serverInfo[1];
 		String url = serverInfo[2];
@@ -54,21 +56,21 @@ public class MallController extends HttpServlet {
 
 		String temp;
 		temp = request.getParameter("pageNumber");
-		int pageNumber = utilProduct.numberCheck(temp, 1);
+		int pageNumber = util.numberCheck(temp, 1);
 
 		temp = request.getParameter("no");
-		int no = utilProduct.numberCheck(temp, 0);
+		int no = util.numberCheck(temp, 0);
 
 		temp = request.getParameter("list_gubun");
-		String list_gubun = utilProduct.list_gubunCheck(temp);
+		String list_gubun = util.list_gubunCheck(temp);
 
 		String search_option = request.getParameter("search_option");
 		String search_data = request.getParameter("search_data");
-		String[] searchArray = utilProduct.searchCheck(search_option, search_data);
+		String[] searchArray = util.searchCheck(search_option, search_data);
 		search_option = searchArray[0];
 		search_data = searchArray[1];
 
-		String[] sesstionArray = utilProduct.sessionCheck(request);
+		String[] sesstionArray = util.sessionCheck(request);
 		int cookNo = Integer.parseInt(sesstionArray[0]);
 		String cookId = sesstionArray[1];
 		String cookName = sesstionArray[2];
@@ -96,7 +98,7 @@ public class MallController extends HttpServlet {
 			int pageSize = 12;
 			int blockSize = 10;
 			int totalRecord = productDao.getTotalRecord(search_option, search_data);
-			int[] pagerArray = utilProduct.pager(pageSize, blockSize, totalRecord, pageNumber);
+			int[] pagerArray = util.pager(pageSize, blockSize, totalRecord, pageNumber);
 			int number = pagerArray[0];
 			int startRecord = pagerArray[1];
 			int lastRecord = pagerArray[2];
@@ -104,7 +106,7 @@ public class MallController extends HttpServlet {
 			int startPage = pagerArray[4];
 			int lastPage = pagerArray[5];
 
-			ArrayList<ProductDTO> list = productDao.getList(startRecord, lastRecord, search_option, search_data);
+			List<ProductDTO> list = productDao.getList(startRecord, lastRecord, search_option, search_data);
 
 			request.setAttribute("menu_gubun", "mall_list");
 			request.setAttribute("list", list);
@@ -126,7 +128,7 @@ public class MallController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		} else if (url.indexOf("view.do") != -1) {
-			productDto = productDao.getView(no);
+			productDto = productDao.getSelectOne(no);
 			request.setAttribute("menu_gubun", "product_view");
 			request.setAttribute("dto", productDto);
 
@@ -135,9 +137,9 @@ public class MallController extends HttpServlet {
 			rd.forward(request, response);
 		} else if (url.indexOf("cart_insertProc.do") != -1) {
 			temp = request.getParameter("productNo");
-			int productNo = utilProduct.numberCheck(temp, 0);
+			int productNo = util.numberCheck(temp, 0);
 			temp = request.getParameter("amount");
-			int amount = utilProduct.numberCheck(temp, 0);
+			int amount = util.numberCheck(temp, 0);
 			
 			cartDto.setMemberNo(cookNo);
 			cartDto.setProductNo(productNo);
@@ -148,7 +150,7 @@ public class MallController extends HttpServlet {
 			int pageSize = 10;
 			int blockSize = 10;
 			int totalRecord = cartDao.getTotalRecord(cookNo);
-			int[] pagerArray = utilProduct.pager(pageSize, blockSize, totalRecord, pageNumber);
+			int[] pagerArray = util.pager(pageSize, blockSize, totalRecord, pageNumber);
 			int number = pagerArray[0];
 			int startRecord = pagerArray[1];
 			int lastRecord = pagerArray[2];

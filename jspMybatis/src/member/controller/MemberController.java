@@ -98,6 +98,11 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("menu_gubun", "member_chuga2");
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
+		} else if (url.indexOf("indexM.do") != -1) {
+			request.setAttribute("menu_gubun", "member_modify2");
+			request.setAttribute("no", cookNo);
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
 		} else if (url.indexOf("list.do") != -1) {
 			int pageSize = 5;
 			int blockSize = 10;
@@ -206,16 +211,19 @@ public class MemberController extends HttpServlet {
 			passwd = passwd.replace("'", "&apos;");
 			MemberDTO resultDto = dao.login(id, passwd);
 			System.out.println("login : " + resultDto);
+			PrintWriter out = response.getWriter();
 			if (resultDto != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("cookNo", resultDto.getNo());
 				session.setAttribute("cookName", resultDto.getName());
 				session.setAttribute("cookId", resultDto.getId());
-				temp = path;
+				out.println("<script>");
+                out.println("location.href='"+path+"/index.do';");
+                out.println("</script>");
 			} else {
 				temp = path + "/member_servlet/login.do";
+				response.sendRedirect(temp);
 			}
-			response.sendRedirect(temp);
 		} else if (url.indexOf("logout.do") != -1) {
 			HttpSession session = request.getSession();
 			session.invalidate();
@@ -234,7 +242,6 @@ public class MemberController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		} else if (url.indexOf("modify_passwdChk.do") != -1) {
-			System.out.println("modify_passwdChk");
 			String id = request.getParameter("id");
 			request.setAttribute("id", id);
 			request.setAttribute("no", no);

@@ -7,6 +7,8 @@ $(document).ready(function() {
 		suntaek_proc('login', '', '');
 	} else if ($("#span_menu_gubun").text() == 'member_chuga2') {
 		suntaek_proc('chuga', '', '');
+	} else if ($("#span_menu_gubun").text() == 'member_modify2') {
+		suntaek_proc('modify_passwdChk', '', $("#span_no").text());
 	}
 });
 

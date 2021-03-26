@@ -1,10 +1,9 @@
 package shop.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -38,16 +37,16 @@ public class ProductController extends HttpServlet {
 	protected void doProc(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		UtilProduct utilProduct = new UtilProduct();
+		UtilProduct util = new UtilProduct();
 
-		int[] nalja = utilProduct.getDateTime();
+		int[] nalja = util.getDateTime();
 		Map<String, Integer> naljaMap = new HashMap<String, Integer>();
 		naljaMap.put("now_y", nalja[0]);
 		naljaMap.put("now_m", nalja[1]);
 		naljaMap.put("now_d", nalja[2]);
 		request.setAttribute("naljaMap", naljaMap);
 
-		String serverInfo[] = utilProduct.getServerInfo(request);
+		String serverInfo[] = util.getServerInfo(request);
 		String refer = serverInfo[0];
 		String path = serverInfo[1];
 		String url = serverInfo[2];
@@ -57,21 +56,21 @@ public class ProductController extends HttpServlet {
 
 		String temp;
 		temp = request.getParameter("pageNumber");
-		int pageNumber = utilProduct.numberCheck(temp, 1);
+		int pageNumber = util.numberCheck(temp, 1);
 
 		temp = request.getParameter("no");
-		int no = utilProduct.numberCheck(temp, 0);
+		int no = util.numberCheck(temp, 0);
 
 		temp = request.getParameter("list_gubun");
-		String list_gubun = utilProduct.list_gubunCheck(temp);
+		String list_gubun = util.list_gubunCheck(temp);
 
 		String search_option = request.getParameter("search_option");
 		String search_data = request.getParameter("search_data");
-		String[] searchArray = utilProduct.searchCheck(search_option, search_data);
+		String[] searchArray = util.searchCheck(search_option, search_data);
 		search_option = searchArray[0];
 		search_data = searchArray[1];
 
-		String[] sesstionArray = utilProduct.sessionCheck(request);
+		String[] sesstionArray = util.sessionCheck(request);
 		int cookNo = Integer.parseInt(sesstionArray[0]);
 		String cookId = sesstionArray[1];
 		String cookName = sesstionArray[2];
@@ -174,8 +173,8 @@ public class ProductController extends HttpServlet {
 					continue;
 				}
 
-				String uuid = utilProduct.create_uuid();
-				String new_filename = utilProduct.getDateTimeType() + "_" + uuid + "." + ext;
+				String uuid = util.create_uuid();
+				String new_filename = util.getDateTimeType() + "_" + uuid + "." + ext;
 				System.out.println(new_filename);
 
 				java.io.File newFile = new java.io.File(img_path03 + new_filename);
@@ -201,10 +200,10 @@ public class ProductController extends HttpServlet {
 			System.out.println("str: " + str);
 
 			temp = multi.getParameter("no");
-			no = utilProduct.numberCheck(temp, 0);
+			no = util.numberCheck(temp, 0);
 			String name = multi.getParameter("name");
 			temp = multi.getParameter("price");
-			int price = utilProduct.numberCheck(temp, 0);
+			int price = util.numberCheck(temp, 0);
 			String description = multi.getParameter("description");
 			dto.setNo(no);
 			dto.setName(name);
@@ -218,7 +217,7 @@ public class ProductController extends HttpServlet {
 				result = dao.setInsert(dto);
 			} else if (url.indexOf("modifyProc.do") != -1) {
 				request.setAttribute("menu_gubun", "product_modifyProc");
-				ProductDTO dto2 = dao.getView(no);
+				ProductDTO dto2 = dao.getSelectOne(no);
 				String db_product_img = dto2.getProduct_img();
 
 				String deleteFileName = "";
@@ -258,7 +257,7 @@ public class ProductController extends HttpServlet {
 			int pageSize = 10;
 			int blockSize = 10;
 			int totalRecord = dao.getTotalRecord(search_option, search_data);
-			int[] pagerArray = utilProduct.pager(pageSize, blockSize, totalRecord, pageNumber);
+			int[] pagerArray = util.pager(pageSize, blockSize, totalRecord, pageNumber);
 			int number = pagerArray[0];
 			int startRecord = pagerArray[1];
 			int lastRecord = pagerArray[2];
@@ -266,7 +265,7 @@ public class ProductController extends HttpServlet {
 			int startPage = pagerArray[4];
 			int lastPage = pagerArray[5];
 
-			ArrayList<ProductDTO> list = dao.getList(startRecord, lastRecord, search_option, search_data);
+			List<ProductDTO> list = dao.getList(startRecord, lastRecord, search_option, search_data);
 
 			request.setAttribute("menu_gubun", "product_list");
 			request.setAttribute("list", list);
@@ -288,7 +287,7 @@ public class ProductController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		} else if (url.indexOf("view.do") != -1) {
-			dto = dao.getView(no);
+			dto = dao.getSelectOne(no);
 			request.setAttribute("menu_gubun", "product_view");
 			request.setAttribute("dto", dto);
 			System.out.println("dto : " + dto);
@@ -297,20 +296,20 @@ public class ProductController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		} else if (url.indexOf("modify.do") != -1) {
-			dto = dao.getView(no);
+			dto = dao.getSelectOne(no);
 			request.setAttribute("menu_gubun", "product_modify");
 			request.setAttribute("dto", dto);
 
 			page = "/shop/product/modify.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
-		} else if (url.indexOf("delete.do") != -1) {
+		} else if (url.indexOf("del.do") != -1) {
 			String img_path01 = request.getSession().getServletContext().getRealPath("/attach/product_img/");
 			String img_path03 = img_path01.replace("\\", "\\\\");
 			java.io.File f1;
 			request.setAttribute("menu_gubun", "product_delete");
-			dto = dao.getView(no);
-			int result = dao.delete(no);
+			dto = dao.getSelectOne(no);
+			int result = dao.setDel(no);
 			String db_product_img = dto.getProduct_img();
 			if (!db_product_img.trim().equals("-,-,-")) {
 				String[] arrayDelete = db_product_img.split(",");

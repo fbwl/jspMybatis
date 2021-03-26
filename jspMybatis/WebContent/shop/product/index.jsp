@@ -12,6 +12,9 @@ ip : ${ip }
 proc :
 <span id="span_proc">${proc }</span>
 <br>
+path :
+<span id="span_path">${path }</span>
+<br>
 pageNumber :
 <span id="span_pageNumber">${pageNumber }</span>
 <br>
@@ -26,3 +29,4 @@ search_data :
 <br>
 
 <div id="result"></div>
+<script src="${path}/shop/product/_product.js"></script>

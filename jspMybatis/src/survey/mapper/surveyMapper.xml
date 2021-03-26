@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 	</select>
 	
 	<select id="getView" resultType="survey.model.dto.SurveyDTO">
-		select * from survey where no=#{no}
+		select * from ${tableName01} where no=#{no}
 	</select>
 	
 	<update id="setModify">

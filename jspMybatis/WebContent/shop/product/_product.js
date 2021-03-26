@@ -1,7 +1,7 @@
 var path = $("#span_path").text();
 
 $(document).ready(function() {
-	if ($("#menu_gubun") == 'product_index') {
+	if ($("#span_menu_gubun").text() == 'product_index') {
 		suntaek_proc('list', '1', '');
 	}
 });
@@ -29,7 +29,7 @@ function suntaek_proc(value1, value2, value3) {
 	goPage(value1);
 }
 
-function goPage(value1) {
+function goPage(value1, value3) {
 	var param = {};
 	var process_data;
 	var content_type;
@@ -84,8 +84,7 @@ function goPage(value1) {
 		url: url,
 		success: function(data) {
 			$("#result").html(data);
-			if (value1 == "chugaProc" || value1 == 'modifyProc'
-				|| value1 == 'delete') {
+			if (value1 == "chugaProc" || value1 == 'modifyProc' || value1 == 'del') {
 				suntaek_proc('list', '1', '');
 			}
 		}
