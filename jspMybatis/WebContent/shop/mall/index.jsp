@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/inc_header.jsp"%>
 
-menu_gubun : ${menu_gubun }
+menu_gubun :
+<span id="span_menu_gubun">${menu_gubun }</span>
 <br>
 naljaMap : ${naljaMap }
 <br>

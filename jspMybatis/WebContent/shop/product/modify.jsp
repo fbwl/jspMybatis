@@ -45,23 +45,8 @@
 	</tr>
 	<tr>
 		<td align="center" colspan="2" height="50px">
-			<button type="button" id="btnModify">수정하기</button>
-			<button type="button" id="btnList">목록으로</button>
+			<button type="button" id="btnModify" onclick="suntaek_proc('modifyProc','0','${dto.no}');">수정하기</button>
+			<button type="button" id="btnList" onclick="suntaek_proc('list','1','');">목록으로</button>
 		</td>
 	</tr>
 </table>
-
-<script>
-$(document).ready(function() {
-	$("#name").focus();
-	$("#name").select();
-	
-	$("#btnModify").click(function(){
-		suntaek_proc('modifyProc','0','${dto.no}');
-	});
-	
-	$("#btnList").click(function() {
-		suntaek_proc('list','1','');
-	})
-})
-</script>

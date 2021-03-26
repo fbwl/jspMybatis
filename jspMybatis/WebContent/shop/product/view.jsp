@@ -54,7 +54,7 @@
 		<td colspan="2">
 			<button type="button" onclick="suntaek_proc('chuga', '', '');">상품등록</button>
 			<button type="button" onclick="suntaek_proc('modify', '', '${dto.no}');">수정하기</button>
-			<button type="button" onclick="suntaek_proc('delete', '', '${dto.no}');">삭제하기</button>
+			<button type="button" onclick="suntaek_proc('del', '', '${dto.no}');">삭제하기</button>
 			<button type="button" onclick="suntaek_proc('list', '1', '');">목록으로</button>
 		</td>
 	</tr>

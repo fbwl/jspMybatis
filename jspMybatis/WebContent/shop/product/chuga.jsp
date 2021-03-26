@@ -28,22 +28,8 @@
 	</tr>
 	<tr>
 		<td align="center" colspan="2" height="50px">
-			<button type="button" id="btnChuga">등록하기</button>
-			<button type="button" id="btnList">목록으로</button>
+			<button type="button" id="btnChuga" onclick="suntaek_proc('chugaProc','','');">등록하기</button>
+			<button type="button" id="btnList" onclick="suntaek_proc('list','1','');">목록으로</button>
 		</td>
 	</tr>
 </table>
-
-<script>
-$(document).ready(function() {
-	$("#name").focus();
-	
-	$("#btnChuga").click(function(){
-		suntaek_proc('chugaProc','1','');
-	});
-	
-	$("#btnList").click(function() {
-		suntaek_proc('list','1','');
-	})
-})
-</script>

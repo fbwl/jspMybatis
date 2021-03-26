@@ -1,4 +1,6 @@
-package common;
+package shop.util;
+
+import common.Util;
 
 public class UtilProduct extends Util{
 	public String[] searchCheck(String search_option, String search_data) {

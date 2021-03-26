@@ -100,7 +100,7 @@ function goPage(value1) {
 	var url = $("#span_path").text() + "/survey_servlet/" + value1 + ".do";
 
 	if (value1 == 'list' || value1 == 'list_2') {
-		var param = {
+		param = {
 			"list_gubun": $("#span_list_gubun").text(),
 			"pageNumber": $("#span_pageNumber").text(),
 			"search_option": $("#span_search_option").text(),
