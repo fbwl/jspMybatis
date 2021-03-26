@@ -158,7 +158,7 @@ public class MallController extends HttpServlet {
 			int startPage = pagerArray[4];
 			int lastPage = pagerArray[5];
 
-			ArrayList<CartDTO> list = cartDao.getList(startRecord, lastRecord, cookNo);
+			List<CartDTO> list = cartDao.getList(startRecord, lastRecord, cookNo);
 			request.setAttribute("menu_gubun", "cartList");
 			request.setAttribute("list", list);
 
@@ -179,9 +179,13 @@ public class MallController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
 		} else if (url.indexOf("cart_clear.do") != -1) {
+			List<String> list = new ArrayList<>();
 			temp = request.getParameter("chk_no");
 			String[] array = temp.split(",");
-			boolean result = cartDao.setDeleteBatch(array);
+			for (int i = 0; i < array.length; i++) {
+				list.add(array[i]);
+			}
+			cartDao.setDeleteBatch(list);
 		}
 	}
 }

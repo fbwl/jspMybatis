@@ -41,13 +41,6 @@
 			<input type="text" name="search_data" id="search_data" value="${search_data }" style="width: 150px">
 			&nbsp;
 			<input type="button" value="검색" onclick="search();">
-			<script>
-			function search() {
-				$("#span_search_option").text($("#search_option").val());
-				$("#span_search_data").text($("#search_data").val());
-				suntaek_proc('mall_search','1','');
-			}
-			</script>
 		</td>
 	</tr>
 	<tr>

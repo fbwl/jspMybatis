@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cart">
+	
+	<insert id="setInsert">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select seq_cart.nextval from dual
+		</selectKey>
+		insert into ${tableName01} (no, memberNo, productNo, amount, regi_date) 
+		values (#{no}, #{dto.memberNo}, #{dto.productNo}, #{dto.amount}, CURRENT_TIMESTAMP)
+	</insert>
+	
+	<select id="getTotalRecord" resultType="int">
+		select count(*) from ${tableName01} where memberNo = #{memberNo}
+	</select>
+	
+	<select id="getList" resultType="shop.model.dto.CartDTO">
+		select * from (select A.*, Rownum rnum from (
+		select C.*,P.name,P.price,P.description,P.product_img,(C.amount * P.price) buy_money 
+		from #{tableName01} C, #{tableName02} P 
+		where C.productNo = P.no and C.memberNo = #{memberNo}
+		<![CDATA[order by P.name desc ) A) where rnum >= #{startRecord} and rnum <= ${lastRecord}]]>
+	</select>
+
+	<delete id="setDeleteBatch">
+		delete from ${tableName01} where
+		<foreach collection="list" index="index" item="item" close="" separator="or">
+			no = #{item}
+		</foreach>
+	</delete>
+	
+	<select id="getListCartProductGroup" resultType="shop.model.dto.CartDTO">
+		select p.name product_name, sum(c.amount * p.price) buy_money 
+		from cart c inner join product p on c.productNo = p.no 
+		group by p.name order by product_name asc
+	</select>
+	
+</mapper>
