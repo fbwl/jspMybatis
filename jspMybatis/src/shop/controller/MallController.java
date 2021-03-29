@@ -147,7 +147,7 @@ public class MallController extends HttpServlet {
 			int result = cartDao.setInsert(cartDto);
 			
 		} else if (url.indexOf("cartList.do") != -1) {
-			int pageSize = 10;
+			int pageSize = 5;
 			int blockSize = 10;
 			int totalRecord = cartDao.getTotalRecord(cookNo);
 			int[] pagerArray = util.pager(pageSize, blockSize, totalRecord, pageNumber);
@@ -181,6 +181,7 @@ public class MallController extends HttpServlet {
 		} else if (url.indexOf("cart_clear.do") != -1) {
 			List<String> list = new ArrayList<>();
 			temp = request.getParameter("chk_no");
+			System.out.println(temp);
 			String[] array = temp.split(",");
 			for (int i = 0; i < array.length; i++) {
 				list.add(array[i]);

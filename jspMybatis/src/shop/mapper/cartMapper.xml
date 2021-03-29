@@ -19,10 +19,10 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 	
 	<select id="getList" resultType="shop.model.dto.CartDTO">
 		select * from (select A.*, Rownum rnum from (
-		select C.*,P.name,P.price,P.description,P.product_img,(C.amount * P.price) buy_money 
-		from #{tableName01} C, #{tableName02} P 
+		select C.*, P.name as product_name, P.price as product_price, P.description as product_description, P.product_img,(C.amount * P.price) buy_money 
+		from ${tableName01} C, ${tableName02} P 
 		where C.productNo = P.no and C.memberNo = #{memberNo}
-		<![CDATA[order by P.name desc ) A) where rnum >= #{startRecord} and rnum <= ${lastRecord}]]>
+		<![CDATA[order by C.regi_date desc ) A) where rnum >= #{startRecord} and rnum <= #{lastRecord}]]>
 	</select>
 
 	<delete id="setDeleteBatch">

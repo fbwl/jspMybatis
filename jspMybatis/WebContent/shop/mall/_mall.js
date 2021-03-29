@@ -63,6 +63,14 @@ function search() {
 //	goPage(value1);
 //}
 
+function chk_cart() {
+	if ($("#checkAll").prop("checked")) {
+		$("input[name=chk]").prop("checked", true);
+	} else {
+		$("input[name=chk]").prop("checked", false);
+	}
+};
+
 function goPage(value1) {
 	var param = {};
 	var url = $("#span_path").text() + "/mall_servlet/" + value1 + ".do";
@@ -76,8 +84,9 @@ function goPage(value1) {
 		param.search_option = $("#span_search_option").text();
 		param.search_data = $("#span_search_data").text();
 	} else if (value1 == "cart_insertProc") {
+		$("#span_amount").text($("#amount option:selected").val());
 		param.productNo = $("#span_no").text();
-		param.amount = $("#span_amount").text($("#amount option:selected").val());
+		param.amount = $("#span_amount").text();
 	} else if (value1 == "cartList") {
 		$("#span_amount").text("");
 		param.pageNumber = $("#span_pageNumber").text();
@@ -109,14 +118,15 @@ function goPage(value1) {
 				if (confirm("장바구니로 이동")) {
 					suntaek_proc("cartList", '1', '');
 				} else {
-					suntaek_proc("mall_view", '', no);
+					$("#span_amount").text('');
+					suntaek_proc('mall_view', '', $("#span_no").text());
 				}
 			} else if (value1 == 'cart_clear') {
 				value1 = 'cartList';
 				suntaek_proc(value1, '1', '');
 			} else if (value1 == 'modifyProc') {
 				alert("modifyProc");
-				suntaek_proc('view', '', $("#span_no").text());
+				suntaek_proc('mall_view', '', $("#span_no").text());
 			} else {
 				$("#result").html(data);
 			}

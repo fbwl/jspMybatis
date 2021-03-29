@@ -27,7 +27,7 @@
 		<td style="padding: 0 0 20px 0;">
 			<table border="1" align="center" style="width: 100%;">
 				<tr>
-					<td><input type="checkbox" id="checkAll" name="checkAll"></td>
+					<td><input type="checkbox" id="checkAll" name="checkAll" onclick="chk_cart()"></td>
 					<td>상품사진</td>
 					<td>상품명</td>
 					<td>가격</td>
@@ -117,13 +117,5 @@
 </table>
 
 <script>
-	$(document).ready(function() {
-		$("#checkAll").click(function() {
-			if ($("#checkAll").prop("checked")) {
-				$("input[name=chk]").prop("checked",true);
-			}else {
-				$("input[name=chk]").prop("checked",false);
-			}
-		});
-	});
+	
 </script>

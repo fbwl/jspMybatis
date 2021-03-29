@@ -22,7 +22,6 @@
 					test="${sessionScope.cookNo != null && sessionScope.cookNo > 0 }">
 	${sessionScope.cookName } 님 환영합니다.
             <a href="${path}/member_servlet/indexM.do">[회원정보 수정]</a>
-            [회원탈퇴]
             <a href="${path }/member_servlet/logout.do">[로그아웃]</a>
 				</c:if>
 			</td>

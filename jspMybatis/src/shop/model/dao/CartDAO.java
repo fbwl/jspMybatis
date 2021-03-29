@@ -1,18 +1,12 @@
 package shop.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import db.DbExample;
 import shop.model.dto.CartDTO;
-import shop.model.dto.ProductDTO;
 import sqlmap.MybatisManager;
 
 public class CartDAO {
@@ -33,7 +27,6 @@ public class CartDAO {
 	}
 
 	public int getTotalRecord(int memberNo) {
-		System.out.println(memberNo);
 		Map<String, String> map = new HashMap<>();
 		map.put("tableName01", tableName01);
 		map.put("memberNo", memberNo+"");
@@ -49,6 +42,7 @@ public class CartDAO {
 		map.put("startRecord", startRecord+"");
 		map.put("lastRecord", lastRecord+"");
 		map.put("tableName01", tableName01);
+		map.put("tableName02", tableName02);
 		map.put("memberNo", memberNo+"");
 		
 		SqlSession session = MybatisManager.getInstance().openSession();
@@ -59,7 +53,7 @@ public class CartDAO {
 
 	public void setDeleteBatch(List<String> list) {
 		Map<String, Object> map = new HashMap<>();
-		map.put("array", list);
+		map.put("list", list);
 		map.put("tableName01", tableName01);
 		map.put("tableName02", tableName02);
 		

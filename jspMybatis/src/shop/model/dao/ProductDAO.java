@@ -12,7 +12,7 @@ import sqlmap.MybatisManager;
 public class ProductDAO {
 
 	String tableName01 = "product";
-	String tableName02 = "";
+	String tableName02 = "cart";
 
 	public int setInsert(ProductDTO dto) {
 		Map<String, Object> map = new HashMap<>();
@@ -45,6 +45,7 @@ public class ProductDAO {
 		map.put("search_option", search_option);
 		map.put("search_data", search_data);
 		map.put("tableName01", tableName01);
+		map.put("tableName02", tableName02);
 		
 		SqlSession session = MybatisManager.getInstance().openSession();
 		List<ProductDTO> list = session.selectList("product.getList", map);
