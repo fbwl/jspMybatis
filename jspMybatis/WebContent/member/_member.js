@@ -25,7 +25,6 @@ function suntaek_all() {
 }
 
 function suntaek_proc(value1, value2, value3) {
-
 	if (value2 != "0") {			// 0 <- 건너뜀
 		$("#span_pageNumber").text(value2);
 	}
@@ -39,7 +38,15 @@ function goPage(value1) {
 	var param;
 	//var url = "${path}/member_servlet/" + value1 + ".do";
 	var url = $("#span_path").text() + "/member_servlet/" + value1 + ".do";
-
+	
+	if (value1 == 'cancel'){
+		if ($("#span_menu_gubun").text() == 'member_index') {
+			suntaek_proc('list', '1', '');
+		} else if ($("#span_menu_gubun").text() == 'member_modify2') {
+			location.href=$("#span_path").text() + "/index.do";
+		}
+	}
+	
 	if (value1 == 'list') {
 		param = {
 			"pageNumber": $("#span_pageNumber").text(),

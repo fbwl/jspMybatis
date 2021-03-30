@@ -31,17 +31,11 @@
 	            <c:when test="${menu_gubun=='survey_index' }"><jsp:include page="../survey/index.jsp"/></c:when>
 	            <c:when test="${menu_gubun=='survey2_index' }"><jsp:include page="../survey/index.jsp"/></c:when>
 	            <c:when test="${menu_gubun=='board_index' }"><jsp:include page="../board/index.jsp"/></c:when>
-<%-- 	            <c:when test="${menu_gubun=='board_chuga' }"><jsp:include page="../board/chuga.jsp"/></c:when> --%>
-<%-- 	            <c:when test="${menu_gubun=='board_list' }"><jsp:include page="../board/list.jsp"/></c:when> --%>
-<%-- 	            <c:when test="${menu_gubun=='board_modify' }"><jsp:include page="../board/modify.jsp"/></c:when> --%>
-<%-- 	            <c:when test="${menu_gubun=='board_delete' }"><jsp:include page="../board/delete.jsp"/></c:when> --%>
 	            <c:when test="${menu_gubun=='product_index' }"><jsp:include page="../shop/product/index.jsp"/></c:when>
-<%-- 	            <c:when test="${menu_gubun=='product_chuga' }"><jsp:include page="../shop/product/chuga.jsp"/></c:when> --%>
-<%-- 	            <c:when test="${menu_gubun=='product_list' }"><jsp:include page="../shop/product/list.jsp"/></c:when> --%>
 	            <c:when test="${menu_gubun=='mall_index' }"><jsp:include page="../shop/mall/index.jsp"/></c:when>
-<%-- 	            <c:when test="${menu_gubun=='mall_list' }"><jsp:include page="../shop/mall/list.jsp"/></c:when> --%>
 	            <c:when test="${menu_gubun=='chart_index' }"><jsp:include page="../chart/index.jsp"/></c:when>
 	            <c:when test="${menu_gubun=='email_index' }"><jsp:include page="../email/index.jsp"/></c:when>
+	            <c:when test="${menu_gubun=='calculator_index' }"><jsp:include page="../calculator/index.jsp"/></c:when>
 	            <c:otherwise><jsp:include page="./error.jsp"/></c:otherwise>
 	        </c:choose>           
          </td>

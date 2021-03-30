@@ -32,12 +32,13 @@
 			<td style="padding: 0px 20px;" id="memo"><a href="${path }/memo_servlet/index.do">메모장</a></td>
 			<td style="padding: 0px 20px;" id="guestbook"><a href="${path }/guestbook_servlet/index.do">방명록</a></td>
 			<td style="padding: 0px 20px;" id="survey"><a href="${path }/survey_servlet/index.do">설문조사</a></td>
-			<td style="padding: 0px 20px;" id="survey2"><a href="${path }/survey_servlet/index2.do">문제은행</a></td>
+			<td style="padding: 0px 20px;" id="survey2"><a href="${path }/survey_servlet/index2.do">설문지(종합)</a></td>
 			<td style="padding: 0px 20px;" id="board"><a href="${path }/board_servlet/index.do">게시판</a></td>
 			<td style="padding: 0px 20px;" id="product"><a href="${path }/product_servlet/index.do">Mall(상품관리)</a></td>
 			<td style="padding: 0px 20px;" id="mall"><a	href="${path }/mall_servlet/index.do">Mall(쇼핑몰)</a></td>
 			<td style="padding: 0px 20px;" id="chart"><a href="${path }/chart_servlet/index.do">Chart</a></td>
 			<td style="padding: 0px 20px;" id="smtpEmail"><a href="${path }/email_servlet/index.do">Email</a></td>
+			<td style="padding: 0px 20px;" id="calculator"><a href="${path }/calculator_servlet/index.do">계산기</a></td>
 			<td style="padding: 0px 20px;" id=""><a href="#">관리자</a></td>
 		</tr>
 	</table>
@@ -95,6 +96,11 @@
 		<c:when test="${gubun=='smtpEmail' }">
 			<script>
 				$("#smtpEmail").css("background-color", "silver");
+			</script>
+		</c:when>
+		<c:when test="${gubun=='calculator' }">
+			<script>
+				$("#calculator").css("background-color", "silver");
 			</script>
 		</c:when>
 	</c:choose>

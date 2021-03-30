@@ -57,7 +57,10 @@
 
 	</tr>
 	<tr>
-		<td colspan="2" align="center"><input type="button" onclick="suntaek_proc('modifyProc','','${dto.no}');" value="수정하기"></td>
+		<td colspan="2" align="center">
+			<input type="button" onclick="suntaek_proc('modifyProc','','${dto.no}');" value="수정하기">
+			<input type="button" onclick="suntaek_proc('cancel','1','');" value="취소">
+		</td>
 	</tr>
 </table>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

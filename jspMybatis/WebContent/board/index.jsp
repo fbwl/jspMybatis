@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/inc_header.jsp"%>
-
+<div style="display: none;">
 menu_gubun : ${menu_gubun }
 <br>
 naljaMap : ${naljaMap }
@@ -38,7 +38,7 @@ search_data :
 commentPageNumber :
 <span id="span_commentPageNumber">${commentPageNumber }</span>
 <br>
-
+</div>
 <div id="result"></div>
 
 <script src="${path}/board/_board.js">
