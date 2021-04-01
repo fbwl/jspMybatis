@@ -110,9 +110,7 @@ function goPage(value1) {
 		data: param,
 		url: url,
 		success: function(data) {
-			if (value1 == 'list' || value1 == 'listAll') {
-				$("#result").html(data);
-			} else if (value1 == 'chugaProc' || value1 == 'delProc') {
+			if (value1 == 'chugaProc' || value1 == 'delProc') {
 				suntaek_proc('list', '1', '');
 			} else if (value1 == 'modifyProc') {
 				suntaek_proc('view', '0', $("#span_no").text());

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/inc_header.jsp"%>
 
+<div style="display: none;">
 menu_gubun : ${menu_gubun }
 <br>
 naljaMap : ${naljaMap }
@@ -20,7 +21,7 @@ search_option :<span id="span_search_option">${search_option }</span>
 <br>
 search_data :<span id="span_search_data">${search_data }</span>
 <br>
-
+</div>
 <div id="result"></div>
 
 <script src="${path}/guestbook/_guestbook.js">

@@ -2,26 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/inc_header.jsp" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
 <h2>메모장</h2>
-	<table width="400">
-		<tr>
-			<td>이름 : <input type="text" id="writer" size="20" ><br>
-				내용 : <input type="text" id="content" size="40" ><br>
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				<button type="button" id="btnInsert" onclick="suntaek_proc('writeProc','','');" style="display: ">등록</button>
-				<button type="button" id="btnModify" onclick="suntaek_proc('modifyProc','','${no}');" style="display: none;">수정</button>
-			</td>
-		</tr>
-	</table>
+<table width="400">
+	<tr>
+		<td>이름 : <input type="text" id="writer" size="20" ><br>
+			내용 : <input type="text" id="content" size="40" ><br>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<button type="button" id="btnInsert" onclick="suntaek_proc('writeProc','','');" style="display: ">등록</button>
+			<button type="button" id="btnModify" onclick="suntaek_proc('modifyProc','','${no}');" style="display: none;">수정</button>
+		</td>
+	</tr>
+</table>
 <c:if test="${totalRecord==0 }">
 	<tr>
 		<td height="200">

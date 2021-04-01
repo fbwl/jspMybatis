@@ -217,6 +217,7 @@ public class MemberController extends HttpServlet {
 				session.setAttribute("cookNo", resultDto.getNo());
 				session.setAttribute("cookName", resultDto.getName());
 				session.setAttribute("cookId", resultDto.getId());
+				session.setAttribute("cookEmail", resultDto.getEmail());
 				out.println("<script>");
                 out.println("location.href='"+path+"/index.do';");
                 out.println("</script>");

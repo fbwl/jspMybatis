@@ -2,12 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/inc_header.jsp" %>
 <!-- <input type="text" name="searchField"><br> -->
+<h2>설문조사 목록</h2>
 <table border="1" width="80%" align="center">
-	<tr>
-		<td colspan="10">
-			<h2>설문조사 목록</h2>
-		</td>
-	</tr>
 	<tr>
 		<td colspan="7">
 			<select name="search_option" id="search_option">

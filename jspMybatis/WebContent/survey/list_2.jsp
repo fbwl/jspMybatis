@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/inc_header.jsp"%>
-문제풀이<br>
-<div style="display: ">
+<h2>설문지</h2>
+<br>
+<div style="display: none">
 total : <span id="span_answer_total"></span><br>
 span_list_size : <span id="span_list_size">${list.size() }</span><br>
 </div>
@@ -14,7 +15,7 @@ span_answer${number } : <span id="span_answer${number }"></span>
 </div>
 	<table border="1" align="center" style="width: 100%">
 		<tr>
-			<td>${dto.no}. Q) ${dto.question }</td>
+			<td>문항 ${number}) ${dto.question }</td>
 		</tr>
 		<tr>
 			<td>
@@ -41,7 +42,8 @@ span_answer${number } : <span id="span_answer${number }"></span>
 			</td>
 		</tr>
 	</table>
-	${number = number-1}
+	<div style="display: none;">${number = number-1}</div>
+	<br><br><br>
 </c:forEach>
 <table>
 	<tr>

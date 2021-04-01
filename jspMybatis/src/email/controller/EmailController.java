@@ -1,9 +1,7 @@
-package chart.controller;
+package email.controller;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,14 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
-
-import chart.service.ChartService;
 import common.Util;
+import email.model.dto.EmailDTO;
+import email.service.EmailService;
+import member.model.dao.MemberDAO;
 
-
-@WebServlet("/chart_servlet/*")
-public class ChartController extends HttpServlet {
+@WebServlet("/email_servlet/*")
+public class EmailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,7 +37,7 @@ public class ChartController extends HttpServlet {
 		Util util = new Util();
 
 		int[] nalja = util.getDateTime();
-		Map<String, Integer> naljaMap = new HashMap<String, Integer>();
+		Map<String, Integer> naljaMap = new HashMap<>();
 		naljaMap.put("now_y", nalja[0]);
 		naljaMap.put("now_m", nalja[1]);
 		naljaMap.put("now_d", nalja[2]);
@@ -77,53 +74,50 @@ public class ChartController extends HttpServlet {
 		String page = "/main/main.jsp";
 
 		if (url.indexOf("index.do") != -1) {
-			request.setAttribute("menu_gubun", "chart_index");
+			request.setAttribute("menu_gubun", "email_index");
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
-		} else if (url.indexOf("googleChartJson.do") != -1) {
-			request.setAttribute("menu_gubun", "googleChartJson");
-			page = "/chart/googleChartJson.jsp";
+		} else if (url.indexOf("send.do") != -1) {
+			request.setAttribute("menu_gubun", "email_send");
+			page = "/email/send.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
-		} else if (url.indexOf("googleChartDb.do") != -1) {
-			request.setAttribute("menu_gubun", "googleChartDb");
-			page = "/chart/googleChartDb.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(page);
-			rd.forward(request, response);
-		} else if (url.indexOf("createJson.do") != -1) {
-			request.setAttribute("menu_gubun", "chart_createJson");
-			page = "/chart/createJson.jsp";
-			ChartService service = new ChartService();
-			JSONObject json = service.getChartData();
-			System.out.println(json.toString());
-			request.setAttribute("data", json);
+		}else if (url.indexOf("sendProc.do") != -1) {
+			String fromName = request.getParameter("fromName");
+			String fromEmail = request.getParameter("fromEmail");
+			String toEmail = request.getParameter("toEmail");
+			String subject = request.getParameter("subject");
+			String content = request.getParameter("content");
 			
-			String img_path01 = request.getSession().getServletContext().getRealPath("/attach/json/");
-			java.io.File isDir = new java.io.File(img_path01);
-			if (!isDir.isDirectory()) {
-				isDir.mkdir();
+			EmailDTO dto = new EmailDTO();
+			dto.setFromName(fromName);
+			dto.setFromEmail(fromEmail);
+			dto.setSubject(subject);
+			dto.setContent(content);
+			
+			String[] toEmailArray = toEmail.split(",");
+			EmailService service = new EmailService();
+			for (int i = 0; i < toEmailArray.length; i++) {
+				try {
+					dto.setToEmail(toEmailArray[i]);
+					System.out.println(dto.getToEmail());
+					service.mailSender(dto);
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-			String img_path02 = img_path01.replace("\\", "/");
-			String img_path03 = img_path01.replace("\\", "\\\\");
-			
-			util.fileDelete(request, img_path03);
-			
-			String newFileName = util.getDateTimeType()+"_"+util.create_uuid()+".json";
-			File file = new File(img_path03+newFileName);
-			file.createNewFile();
-			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-			bufferedWriter.write(json.toString());
-			bufferedWriter.close();
-			System.out.println(newFileName);
-			
-			request.setAttribute("menu_gubun", "product_list");
-			request.setAttribute("chart_subject", "상품별 매출액");
-			request.setAttribute("chart_type", "PieChart");
-			request.setAttribute("chart_jsonFileName", newFileName);
-			
-			page = "/chart/myChart.jsp";
+			page = "/email/send.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
+		}else if (url.indexOf("selectBirthday.do") != -1) {
+			MemberDAO dao = new MemberDAO();
+			String result = dao.getSelectBirthday();
+			System.out.println(result);
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println(result);
+			out.flush();
+			out.close();
 		}
 	}
 

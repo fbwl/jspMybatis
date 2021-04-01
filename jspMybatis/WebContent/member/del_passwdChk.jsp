@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/inc_header.jsp"%>
+
+<h2>비밀번호 확인</h2>
 <table border="1" align="center" width="80%">
 	<tr>
 		<td width="150">비밀번호</td>

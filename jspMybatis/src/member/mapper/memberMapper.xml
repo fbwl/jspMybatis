@@ -69,4 +69,8 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 		select * from member where id=#{id} and passwd=#{passwd}
 	</select>
 	
+	<select id="getSelectBirthday" resultType="String">
+		select email from member where substr(bornyear, 5,8) = (select to_char(sysdate, 'MMDD') from dual)
+	</select>
+	
 </mapper>

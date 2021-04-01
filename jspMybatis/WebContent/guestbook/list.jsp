@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/inc_header.jsp"%>
-
+<h2>방명록</h2>
 <table border="1" align="center" width="100%">
-	<tr>
-		<td colspan="100">
-			<h2>방명록</h2>
-		</td>
-	</tr>
 	<tr>
 		<td colspan="100">
 			<select name="search_option" id="search_option">

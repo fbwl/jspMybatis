@@ -2,33 +2,34 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/inc_header.jsp"%>
 
+<div style="display: none;">
+menu_gubun :
+<span id="span_menu_gubun">${menu_gubun }</span>
+<br>
+naljaMap : ${naljaMap }
+<br>
+ip : ${ip }
+<br>
+proc :
+<span id="span_proc">${proc }</span>
+<br>
+path :
+<span id="span_path">${path }</span>
+<br>
+pageNumber :
+<span id="span_pageNumber">${pageNumber }</span>
+<br>
+no :
+<span id="span_no">${no }</span>
+<br>
+search_option :
+<span id="span_search_option">${search_option }</span>
+<br>
+search_data :
+<span id="span_search_data">${search_data }</span>
+<br>
+</div>
+
 <div id="result"></div>
 
-<script>
-	$(document).ready(function() {
-		<c:if test="${menu_gubun == 'email_index'}">
-		goPage('chuga');
-		</c:if>
-	})
-
-	function goPage(value1) {
-		var method_type = "post";
-		var param = {
-			"fromName" : $("#fromName").val(),
-			"fromEmail" : $("#fromEmail").val(),
-			"toEmail" : $("#toEmail").val(),
-			"subject" : $("#subject").val(),
-			"content" : $("#content").val()
-		}
-		var url = "${path}/email_servlet/" + value1 + ".do";
-
-		$.ajax({
-			type : method_type,
-			data : param,
-			url : url,
-			success : function(data) {
-				$("#result").html(data);
-			}
-		});
-	}
-</script>
+<script src="${path }/email/_email.js"></script>

@@ -1,76 +1,21 @@
-$(".member-anim").mouseover(function() {
+$(".img-anim").mouseover(function() {
   $(this).attr("src", $(this).data("animated"))
 }),
-$(".member-anim").mouseout(function() {
+$(".img-anim").mouseout(function() {
   $(this).attr("src", $(this).data("static"))
 });
 
-$(".memo-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".memo-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
-});
-
-$(".guestbook-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".guestbook-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
-});
-
-$(".survey-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".survey-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
-});
-
-$(".survey2-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".survey2-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
-});
-
-$(".board-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".board-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
-});
-
-$(".product-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".product-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
-});
-
-$(".mall-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".mall-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
-});
-
-$(".chart-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".chart-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
-});
-
-$(".calculator-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".calculator-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
-});
-
-$(".-anim").mouseover(function() {
-  $(this).attr("src", $(this).data("animated"))
-}),
-$(".-anim").mouseout(function() {
-  $(this).attr("src", $(this).data("static"))
+$(function() {
+	// 이미지 슬라이드 컨트롤를 사용하기 위해서는 carousel를 실행해야한다.
+	$('#carousel-example-generic').carousel({
+		// 슬리아딩 자동 순환 지연 시간
+		// false면 자동 순환하지 않는다.
+		interval: 5000,
+		// hover를 설정하면 마우스를 가져대면 자동 순환이 멈춘다.
+		pause: "hover",
+		// 순환 설정, true면 1 -> 2가면 다시 1로 돌아가서 반복
+		wrap: true,
+		// 키보드 이벤트 설정 여부(?)
+		keyboard: true
+	});
 });

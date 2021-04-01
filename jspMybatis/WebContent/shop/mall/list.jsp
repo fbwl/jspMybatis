@@ -2,12 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/inc_header.jsp"%>
 
+<h2>쇼핑몰</h2>
 <table border="0" align="center" width="100%">
-	<tr>
-		<td colspan="7">
-			<h2>Shopping Mall</h2>
-		</td>
-	</tr>
 	<tr>
 		<td colspan="7">
 			<select name="search_option" id="search_option">
@@ -66,7 +62,7 @@
 			<c:set var="cell_counter" value="3"></c:set>
 			
 			<c:set var="k" value="0"></c:set>
-			<table border="1" align="center" width="100%">
+			<table border="0" align="center" width="100%">
 				<c:forEach var="dto" items="${list }">
 					<c:set var="k" value="${k = k + 1 }"></c:set>
 					<c:if test="${k mod cell_counter == 1 }">

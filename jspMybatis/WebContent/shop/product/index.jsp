@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/inc_header.jsp"%>
 
+<div style="display: none;">
 menu_gubun :
 <span id="span_menu_gubun">${menu_gubun }</span>
 <br>
@@ -27,6 +28,6 @@ search_option :
 search_data :
 <span id="span_search_data">${search_data }</span>
 <br>
-
+</div>
 <div id="result"></div>
 <script src="${path}/shop/product/_product.js"></script>

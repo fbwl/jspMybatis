@@ -11,16 +11,16 @@
 	<table border="1">
 		<tr>
 			<td colspan="10"><input id="calcul"
-				style="width: 300px; height: 100px; text-align: right;"></td>
+				style="width: 279px; height: 100px; text-align: right;"></td>
 		</tr>
 		<tr>
 			<td colspan="10"><span id="save" style="text-align: right;">결과</span></td>
 		</tr>
 		<tr align="center">
-			<td id="7" onclick="num('7');" height="50px">7</td>
-			<td id="8" onclick="num('8');">8</td>
-			<td id="9" onclick="num('9');">9</td>
-			<td id="+" onclick="gyesan('+');">+</td>
+			<td id="7" onclick="num('7');" height="50px" width="70px">7</td>
+			<td id="8" onclick="num('8');" width="70px">8</td>
+			<td id="9" onclick="num('9');" width="70px">9</td>
+			<td id="+" onclick="gyesan('+');" width="70px">+</td>
 		</tr>
 		<tr align="center">
 			<td id="4" onclick="num('4');" height="50px">4</td>

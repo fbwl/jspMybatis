@@ -2,12 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../include/inc_header.jsp"%>
 
+<h2>상품 목록</h2>
 <table border="0" align="center" width="100%">
-	<tr>
-		<td colspan="7">
-			<h2>상품 목록</h2>
-		</td>
-	</tr>
 	<tr>
 		<td colspan="7">
 			<select name="search_option" id="search_option">
