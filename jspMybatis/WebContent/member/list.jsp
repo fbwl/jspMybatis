@@ -72,7 +72,7 @@
 				<tr>
 					<td>번호</td>
 					<td>아이디</td>
-					<td>비밀번호</td>
+<!-- 					<td>비밀번호</td> -->
 					<td>이름</td>
 					<td>성별</td>
 					<td>출생연도</td>
@@ -88,7 +88,7 @@
 					<tr>
 						<td><c:out value="${dto.no }"></c:out></td>
 						<td><a href="#" onclick="suntaek_proc('view','','${dto.no}')"><c:out value="${dto.id }"></c:out></a></td>
-						<td><c:out value="${dto.passwd }"></c:out></td>
+<%-- 						<td><c:out value="${dto.passwd }"></c:out></td> --%>
 						<td><c:out value="${dto.name }"></c:out></td>
 						<td><c:out value="${dto.gender }"></c:out></td>
 						<td><c:out value="${dto.bornYear }"></c:out></td>

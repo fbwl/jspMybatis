@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">
 			select seq_guestbook.nextval from dual
 		</selectKey>
-		insert into guestbook (no, passwd, name, email, content, regi_date) 
+		insert into guestbook (no, name, passwd, email, content, regi_date) 
 		values (#{no}, #{dto.name}, #{dto.passwd}, #{dto.email}, #{dto.content}, sysdate)
 	</insert>
 	

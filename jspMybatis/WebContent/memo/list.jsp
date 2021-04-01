@@ -6,7 +6,7 @@
 <table width="400">
 	<tr>
 		<td>이름 : <input type="text" id="writer" size="20" ><br>
-			내용 : <input type="text" id="content" size="40" ><br>
+			내용 : <input type="text" id="content" size="35" ><br>
 		</td>
 	</tr>
 	<tr>

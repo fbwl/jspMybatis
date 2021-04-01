@@ -3,14 +3,16 @@
 <%@ include file="../include/inc_header.jsp"%>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <form name="DirForm">
-	<h2>아이디 검색</h2>
-	<table border="1" align="center" width="550">
-		<tr>
-			<td>아이디</td>
+	<h2 align="center">아이디 검색</h2>
+	<table border="0" align="center">
+		<tr align="center">
+			<td>아이디 :&nbsp;</td>
 			<td><input type="text" name="id" id="id" value="${id }">
 			<span id="spanMsg"></span>
 			<br>
+			<div style="display: none;">
 			<input type="text" name="result" id="result" value="" style="width: 100px;">
+			</div>
 		</tr>
 		<tr>
 			<td colspan="2" align="center" style="height: 50px;">

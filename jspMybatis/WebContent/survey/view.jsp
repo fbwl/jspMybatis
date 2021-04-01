@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/inc_header.jsp"%>
-설문조사 상세보기<br>
+설문조사<br>
+<div style="display: none;">
 span_answer : <span id="span_answer"></span>
+</div>
 <table border="1" align="center" style="width: 100%">
 	<tr>
 		<td>Q) ${dto.question }</td>

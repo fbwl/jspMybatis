@@ -4,6 +4,7 @@ $(document).ready(function() {
 	if ($("#span_menu_gubun").text() == 'survey_index') {
 		suntaek_proc('list', '1', '');
 	} else if ($("#span_menu_gubun").text() == 'survey2_index') {
+		$("#span_list_gubun").text('ing');
 		suntaek_proc('list_2', '1', '');
 	}
 });
@@ -126,7 +127,7 @@ function goPage(value1) {
 			"ans2": $("#ans2").val(),
 			"ans3": $("#ans3").val(),
 			"ans4": $("#ans4").val(),
-			"status": $("#status").val(),
+			"status": $('input[name="status"]:checked').val(),
 			"syear": $("#syear option:selected").val(),
 			"smonth": $("#smonth option:selected").val(),
 			"sday": $("#sday option:selected").val(),
@@ -148,7 +149,7 @@ function goPage(value1) {
 				} else {
 					$("input[id=search_date_check]:checkbox").prop("checked", false);
 				}
-			} else if (value1 == 'chugaProc' || value1 == 'delProc') {
+			} else if (value1 == 'chugaProc' || value1 == 'delProc' || value1 == 'modifyProc' ) {
 				suntaek_proc('list', '1', '');
 			} else {
 				$("#result").html(data);

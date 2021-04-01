@@ -30,8 +30,14 @@
 		<tr>
 			<td style="aling:center;">status</td>
 			<td>
-				<input type="radio" name="status" id="status" value="1">진행중
-				<input type="radio" name="status" id="status" value="0">종료
+				<c:if test="${dto.status == '1' }">
+				<input type="radio" name="status" id="" value="1" checked="checked">진행중
+				<input type="radio" name="status" id="" value="0">종료
+				</c:if>
+				<c:if test="${dto.status == '0' }">
+				<input type="radio" name="status" id="" value="1">진행중
+				<input type="radio" name="status" id="" value="0" checked="checked">종료
+				</c:if>
 			</td>
 		</tr>
 		<tr>

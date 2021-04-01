@@ -19,7 +19,7 @@
 			</c:choose>
 			</select>
 			
-			<input type="text" name="search_data" id="search_data" value="" style="width: 150px">
+			<input type="text" name="search_data" id="search_data" value="${search_data }" style="width: 150px">
 			<input type="text" name="search_date_s" id="search_date_s" value="${search_date_s }" style="width: 150px"> ~
 			<input type="text" name="search_date_e" id="search_date_e" value="${search_date_e }" style="width: 150px">
 			<input type="checkbox" name="search_date_check" id="search_date_check" value="O" onclick="checkboxChk();"><span style="color:blue; font-size: 9px;">[날짜 검색시 체크]</span>&nbsp;

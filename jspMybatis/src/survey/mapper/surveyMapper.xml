@@ -15,9 +15,8 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 			</when>
 		</choose>
 		<choose>
-			<when
-				test="search_option != null and search_option !='' and search_data != null and search_data != '' ">
-				and (#{search_option} like '%' || #{search_data} || '%')
+			<when test="search_option != '' and search_option != null and search_data != '' and search_data != null ">
+				and (${search_option} like '%' || #{search_data} || '%')
 			</when>
 		</choose>
 		<choose>
@@ -36,11 +35,11 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 	</insert>
 	
 	<insert id="setInsertAnswer">
-		<selectKey keyProperty="answer_no" resultType="int" order="BEFORE">
+		<selectKey keyProperty="answerNo" resultType="int" order="BEFORE">
 			select seq_survey_answer.nextval from dual
 		</selectKey>
 		insert into ${tableName02} (answer_no, no, answer) 
-		values (#{answer_no}, #{dto.no}, #{dto.answer})
+		values (#{answerNo}, #{saDTO.no}, #{saDTO.answer})
 	</insert>
 	
 	<select id="getList" resultType="survey.model.dto.SurveyDTO">
@@ -61,7 +60,7 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 	</select>
 	
 	<update id="setModify">
-		update ${tableName01} set question=#{dto.question}, ans1=#{dto.ans1}, ans2=#{dto.ans2}, ans3=#{dto.ans3}, ans4=#{dto.ans4}, start_date=#{dto.start_date}, last_date=#{dto.last_date} where no=#{dto.no}
+		update ${tableName01} set question=#{dto.question}, ans1=#{dto.ans1}, ans2=#{dto.ans2}, ans3=#{dto.ans3}, ans4=#{dto.ans4}, status=#{dto.status}, start_date=#{dto.start_date}, last_date=#{dto.last_date} where no=#{dto.no}
 	</update>
 	
 	<delete id="setDelAnswer">

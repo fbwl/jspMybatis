@@ -19,6 +19,7 @@ public class SurveyDAO {
 	public int setInsert(SurveyDTO dto) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("dto", dto);
+		map.put("tableName01", tableName01);
 
 		SqlSession session = MybatisManager.getInstance().openSession();
 		int result = session.insert("survey.setInsert", map);
@@ -30,6 +31,7 @@ public class SurveyDAO {
 	public int setInsertAnswer(SurveyAnswerDTO saDTO) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("saDTO", saDTO);
+		map.put("tableName02", tableName02);
 
 		SqlSession session = MybatisManager.getInstance().openSession();
 		int result = session.insert("survey.setInsertAnswer", map);

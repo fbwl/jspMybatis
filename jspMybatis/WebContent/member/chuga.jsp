@@ -10,7 +10,9 @@
 			<td><input type="text" name="id_${proc }" id="id_${proc }" value="">
 				<button type="button" onclick="id_check_div();">아이디찾기</button>
 				<button type="button" onclick="id_check_win();">아이디찾기(새창)</button>
+				<div style="display: none;">
 				<input type="text" name="idChk_${proc}" id="idChk_${proc}" value="">
+				</div>
 				<br><span id="label_id"></span>
 			</td>
 		</tr>
@@ -31,11 +33,13 @@
 			<td>
 				<input type="radio" name="genderRadio" value="M" onclick="suntaek_gender('M');" checked="checked">남 &nbsp;&nbsp;
 				<input type="radio" name="genderRadio" value="F" onclick="suntaek_gender('F');">여
+				<div style="display: none;">
 				<input type="text" id="gender_${proc}" name="gender_${proc}" value="M">
+				</div>
 			</td>
 		</tr>
 		<tr>
-			<td width="150">출생연도</td>
+			<td width="150">생년월일(ex:19980101)</td>
 			<td><input type="text" name="bornYear_${proc}" id="bornYear_${proc}" value=""></td>
 		</tr>
 		<tr>

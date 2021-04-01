@@ -39,7 +39,7 @@
 	</tr>
 	<tr>
 		<td>이름 :</td>
-		<td><input type="text" name="name" id="name"></td>
+		<td><input type="text" name="name" id="name" value="${sessionScope.cookName }"></td>
 	</tr>
 	<tr>
 		<td>비밀번호 :</td>
@@ -47,7 +47,7 @@
 	</tr>
 	<tr>
 		<td>이메일 :</td>
-		<td><input type="text" name="email" id="email" size="40"></td>
+		<td><input type="text" name="email" id="email" size="40" value="${sessionScope.cookEmail }"></td>
 	</tr>
 	<tr>
 		<td>내용 :</td>
@@ -61,7 +61,7 @@
 	</tr>
 	<c:if test="${totalRecord==0 }">
 		<tr>
-			<td height="200">
+			<td height="200" colspan="100">
 				<table border="1" align="center" style="width: 100%; height: 200px;">
 					<tr>
 						<td align="center">등록된 내용이 없습니다.</td>

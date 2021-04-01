@@ -87,6 +87,8 @@ public class SurveyController extends HttpServlet {
 		request.setAttribute("no", no);
 		request.setAttribute("search_option", search_option);
 		request.setAttribute("search_data", search_data);
+		request.setAttribute("search_date_s", search_date_s);
+		request.setAttribute("search_date_e", search_date_e);
 
 		String page = "/main/main.jsp";
 
@@ -121,8 +123,6 @@ public class SurveyController extends HttpServlet {
 
 			String start_date_ = syear + "-" + smonth + "-" + sday + " 00:00:00.0";
 			String last_date_ = lyear + "-" + lmonth + "-" + lday + " 23:59:59.9";
-			System.out.println("start:" + start_date_);
-			System.out.println("last:" + last_date_);
 			java.sql.Timestamp start_date = java.sql.Timestamp.valueOf(start_date_);
 			java.sql.Timestamp last_date = java.sql.Timestamp.valueOf(last_date_);
 
@@ -214,6 +214,7 @@ public class SurveyController extends HttpServlet {
 				SurveyAnswerDTO answerDto = new SurveyAnswerDTO();
 				answerDto.setNo(tempNo);
 				answerDto.setAnswer(tempAnswer);
+				System.out.println(answerDto.toString());
 				dao.setInsertAnswer(answerDto);
 			}
 		} else if (url.indexOf("modify.do") != -1) {

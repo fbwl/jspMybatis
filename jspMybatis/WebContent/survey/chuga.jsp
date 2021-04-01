@@ -30,8 +30,8 @@
 		<tr>
 			<td style="aling:center;">status</td>
 			<td>
-				<input type="radio" name="status" id="status" value="1">진행중
-				<input type="radio" name="status" id="status" value="0">종료
+				<input type="radio" name="status" id="" value="1">진행중
+				<input type="radio" name="status" id="" value="0">종료
 			</td>
 		</tr>
 		<tr>
