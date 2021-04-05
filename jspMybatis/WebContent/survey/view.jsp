@@ -35,7 +35,7 @@ span_answer : <span id="span_answer"></span>
 	</tr>
 	<tr>
 		<td colspan="10" height="50" align="right">
-			<button type="button" onclick="suntaek_proc('viewProc','','');">설문조사 저장하기</button>
+			<button type="button" onclick="suntaek_proc('ansProc','','${dto.no}');">설문조사 저장하기</button>
 			<button type="button" onclick="suntaek_proc('list','1','');">목록으로</button>
 			<button type="button" onclick="suntaek_proc('modify','','${dto.no}');">수정</button>
 			<button type="button" onclick="suntaek_proc('delProc','','${dto.no}');">삭제</button>

@@ -13,15 +13,15 @@
 	</tr>
 	<tr>
 		<td style="align: center;">작성자</td>
-		<td><input type="text" name="writer" id="writer"></td>
+		<td><input type="text" name="writer" id="writer" value="${sessionScope.cookName }"></td>
 	</tr>
 	<tr>
 		<td style="align: center;">이메일</td>
-		<td><input type="text" name="email" id="email"></td>
+		<td><input type="text" name="email" id="email" value="${sessionScope.cookEmail }"></td>
 	</tr>
 	<tr>
 		<td style="align: center;">비밀번호</td>
-		<td><input type="text" name="passwd" id="passwd"></td>
+		<td><input type="password" name="passwd" id="passwd"></td>
 	</tr>
 	<tr>
 		<td style="align: center;">제목</td>

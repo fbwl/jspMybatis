@@ -63,7 +63,6 @@
 						<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.amount}"></fmt:formatNumber></td>
 						<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.buy_money}"></fmt:formatNumber></td>
 						<td>${dto.regi_date}</td>
-						<td><button id="delete" onclick="suntaek_proc('deleteProc','','${dto.no}');">삭제</button></td>
 					</tr>
 					<c:set var="i" value="${i = i + 1}"></c:set>
 					<c:set var="sum_money" value="${sum_money = sum_money + dto.buy_money}"></c:set>
@@ -109,7 +108,7 @@
 </c:if>
 <tr>
 	<td colspan="7" height="50" align="right">
-		<button type="button" onclick="suntaek_proc('cart_clear','','');">장바구니비우기</button>
+		<button type="button" onclick="suntaek_proc('cart_clear','','');">선택 상품 삭제</button>
 		<button type="button" onclick="suntaek_proc('list','','');">쇼핑하기</button>
 <!-- 		<button type="button" onclick="suntaek_proc('cartList','','');">장바구니</button> -->
 		<button type="button" onclick="suntaek_proc('buy','','');">주문하기</button>

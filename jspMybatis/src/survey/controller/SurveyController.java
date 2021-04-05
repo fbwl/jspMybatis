@@ -186,20 +186,13 @@ public class SurveyController extends HttpServlet {
 			page = "/survey/view.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(page);
 			rd.forward(request, response);
-		} else if (url.indexOf("viewProc.do") != -1) {
-			String answer_ = request.getParameter("answer");
-			int answer = util.numberCheck(answer_, 0);
-			SurveyAnswerDTO sadto = new SurveyAnswerDTO();
-			sadto.setNo(no);
-			sadto.setAnswer(answer);
-			System.out.println(sadto.toString());
-			dao.setInsertAnswer(sadto);
 		} else if (url.indexOf("ansProc.do") != -1) {
 			String answer_ = request.getParameter("answer");
 			int answer = util.numberCheck(answer_, 0);
 			SurveyAnswerDTO sadto = new SurveyAnswerDTO();
 			sadto.setNo(no);
 			sadto.setAnswer(answer);
+			System.out.println(sadto.toString());
 			dao.setInsertAnswer(sadto);
 		} else if (url.indexOf("saveProc.do") != -1) {
 			String answer_total = request.getParameter("answer_total");
@@ -234,6 +227,11 @@ public class SurveyController extends HttpServlet {
 		} else if (url.indexOf("delProc.do") != -1) {
 			dao.setDelAnswer(no);
 			dao.setDel(no);
+		} else if (url.indexOf("answerCount.do") != -1) {
+			
+			page = "/survey/answerCount.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(page);
+			rd.forward(request, response);
 		}
 	}
 

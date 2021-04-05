@@ -31,9 +31,9 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 	
 	<select id="getList" resultType="shop.model.dto.ProductDTO">
 		select * from (select A.*, Rownum rnum from (
-		select P.*,C.buy_counter from product P, (
+		select P.*,C.buy_counter from product P left outer join (
 		select sum(amount) as buy_counter ,productNo from cart group by productNo) C 
-		where P.no=C.productno
+		on P.no=C.productno
 		<include refid="search"></include>
 		<![CDATA[order by P.no desc ) A) where rnum >= #{startRecord} and rnum <= ${lastRecord}]]>
 

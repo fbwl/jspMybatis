@@ -37,7 +37,7 @@
 			<td style="padding: 0px 20px;" id="mall"><a	href="${path }/mall_servlet/index.do">Mall(쇼핑몰)</a></td>
 			<td style="padding: 0px 20px;" id="chart"><a href="${path }/chart_servlet/index.do">Chart</a></td>
 			<td style="padding: 0px 20px;" id="smtpEmail"><a href="${path }/email_servlet/index.do">Email</a></td>
-			<td style="padding: 0px 20px;" id="calculator"><a href="${path }/calculator_servlet/index.do">계산기</a></td>
+<%-- 			<td style="padding: 0px 20px;" id="calculator"><a href="${path }/calculator_servlet/index.do">계산기</a></td> --%>
 <!-- 			<td style="padding: 0px 20px;" id=""><a href="#">관리자</a></td> -->
 		</tr>
 	</table>

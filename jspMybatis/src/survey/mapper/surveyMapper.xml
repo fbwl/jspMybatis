@@ -59,6 +59,10 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 		select * from ${tableName01} where no=#{no}
 	</select>
 	
+	<select id="getListAns" resultType="survey.model.dto.SurveyAnswerDTO">
+		select answer,count(answer) answer_count from ${tableName02} where no=#{no} group by answer
+	</select>
+	
 	<update id="setModify">
 		update ${tableName01} set question=#{dto.question}, ans1=#{dto.ans1}, ans2=#{dto.ans2}, ans3=#{dto.ans3}, ans4=#{dto.ans4}, status=#{dto.status}, start_date=#{dto.start_date}, last_date=#{dto.last_date} where no=#{dto.no}
 	</update>

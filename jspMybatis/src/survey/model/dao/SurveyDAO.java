@@ -134,4 +134,15 @@ public class SurveyDAO {
 		session.close();
 		return result;
 	}
+
+	public List<SurveyAnswerDTO> getListAns(int no) {
+		Map<String, String> map = new HashMap<>();
+		map.put("tableName02", tableName02);
+		map.put("no", no+"");
+		
+		SqlSession session = MybatisManager.getInstance().openSession();
+		List<SurveyAnswerDTO> list = session.selectList("survey.getListAns", map);
+		session.close();
+		return list;
+	}
 }

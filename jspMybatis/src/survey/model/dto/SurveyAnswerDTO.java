@@ -4,6 +4,8 @@ public class SurveyAnswerDTO {
 	private int answer_no;
 	private int no;
 	private int answer;
+	private int answer_count;
+	
 	public SurveyAnswerDTO() {
 		super();
 	}
@@ -25,9 +27,17 @@ public class SurveyAnswerDTO {
 	public void setAnswer(int answer) {
 		this.answer = answer;
 	}
+	public int getAnswer_count() {
+		return answer_count;
+	}
+	public void setAnswer_count(int answer_count) {
+		this.answer_count = answer_count;
+	}
 	@Override
 	public String toString() {
-		return "SurveyAnswerDTO [answer_no=" + answer_no + ", no=" + no + ", answer=" + answer + "]";
+		return "SurveyAnswerDTO [answer_no=" + answer_no + ", no=" + no + ", answer=" + answer + ", answer_count="
+				+ answer_count + "]";
 	}
+	
 	
 }

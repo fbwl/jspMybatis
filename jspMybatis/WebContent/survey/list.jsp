@@ -53,7 +53,7 @@
 			<td>${number }</td>
 			<td><a href="#" onclick="suntaek_proc('view','','${dto.no}');">${dto.question }</a></td>
 			<td>${dto.start_date }<br>${dto.last_date }</td>
-			<td>${dto.survey_counter }</td>
+			<td><a href="#" onclick="suntaek_proc('answerCount','','${dto.no}');">${dto.survey_counter }</a></td>
 			<td>${dto.status }</td>
 		</tr>
 		<c:set var="number" value="${number=number-1 }"></c:set>

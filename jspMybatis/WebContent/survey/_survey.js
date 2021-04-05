@@ -110,7 +110,7 @@ function goPage(value1) {
 			"search_date_e": $("#span_search_date_e").text(),
 			"search_date_check": $("#span_search_date_check").text()
 		}
-	} else if (value1 == 'view' || value1 == 'viewProc' || value1 == 'delProc' || value1 == 'modify') {
+	} else if (value1 == 'view' || value1 == 'ansProc' || value1 == 'delProc' || value1 == 'modify') {
 		param = {
 			"no": $("#span_no").text(),
 			"answer": $("#span_answer").text()
@@ -149,8 +149,10 @@ function goPage(value1) {
 				} else {
 					$("input[id=search_date_check]:checkbox").prop("checked", false);
 				}
-			} else if (value1 == 'chugaProc' || value1 == 'delProc' || value1 == 'modifyProc' ) {
+			} else if (value1 == 'chugaProc' || value1 == 'delProc' || value1 == 'modifyProc') {
 				suntaek_proc('list', '1', '');
+			} else if (value1 == 'saveProc' || value1 == 'ansProc') {
+				suntaek_proc('answerCount', '', $("#span_no").text());
 			} else {
 				$("#result").html(data);
 			}

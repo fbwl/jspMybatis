@@ -48,7 +48,7 @@ span_answer${number } : <span id="span_answer${number }"></span>
 <table>
 	<tr>
 		<td colspan="10" height="50" align="right">
-			<button type="button" onclick="suntaek_proc('saveProc','','');">문제 저장하기</button>
+			<button type="button" onclick="suntaek_proc('saveProc','','');">설문저장</button>
 			<button type="button" onclick="suntaek_proc('list_2','1','');">목록으로</button>
 		</td>
 	</tr>
