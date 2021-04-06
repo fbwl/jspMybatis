@@ -6,13 +6,13 @@
 <div id="chart_div"></div>
 <!-- 차트 새로고침 버튼 -->
 <button id="btn" type="button"
-	onclick="drawChart('PieChart','${chart_subject}', '${chart_jsonFileName }','');">PieChart</button>
+	onclick="drawChart('PieChart','${chart_subject}', '${chart_jsonFileName }','');">원 차트</button>
+<!-- <button id="btn" type="button" -->
+<%-- 	onclick="drawChart('LineChart','${chart_subject}', '${chart_jsonFileName }','');">LineChart(직선)</button> --%>
+<!-- <button id="btn" type="button" -->
+<%-- 	onclick="drawChart('LineChart','${chart_subject}', '${chart_jsonFileName }','function');">LineChart(곡선)</button> --%>
 <button id="btn" type="button"
-	onclick="drawChart('LineChart','${chart_subject}', '${chart_jsonFileName }','');">LineChart(직선)</button>
-<button id="btn" type="button"
-	onclick="drawChart('LineChart','${chart_subject}', '${chart_jsonFileName }','function');">LineChart(곡선)</button>
-<button id="btn" type="button"
-	onclick="drawChart('ColumnChart','${chart_subject}', '${chart_jsonFileName }','');">ColumnChart</button>
+	onclick="drawChart('ColumnChart','${chart_subject}', '${chart_jsonFileName }','');">막대 차트</button>
 
 <script>
 	value1 = "${chart_type}";

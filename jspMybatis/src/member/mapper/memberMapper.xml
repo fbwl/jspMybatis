@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 	</insert>
 	
 	<update id="setModify">
-		update member set passwd=#{dto.passwd}, name=#{dto.name}, gender=#{dto.gender}, postcode=#{dto.postcode}, address=#{dto.address}, detailAddress=#{dto.detailAddress}, extraAddress=#{dto.extraAddress}, email=#{dto.email} where id=#{dto.id}
+		update member set passwd=#{dto.passwd}, name=#{dto.name}, bornYear=#{dto.bornYear}, gender=#{dto.gender}, postcode=#{dto.postcode}, address=#{dto.address}, detailAddress=#{dto.detailAddress}, extraAddress=#{dto.extraAddress}, email=#{dto.email} where no=#{dto.no}
 	</update>
 	
 	<delete id="setDel">

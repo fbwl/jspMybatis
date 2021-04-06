@@ -149,9 +149,9 @@ function goPage(value1) {
 				} else {
 					$("input[id=search_date_check]:checkbox").prop("checked", false);
 				}
-			} else if (value1 == 'chugaProc' || value1 == 'delProc' || value1 == 'modifyProc') {
+			} else if (value1 == 'chugaProc' || value1 == 'delProc' || value1 == 'modifyProc' || value1 == 'saveProc' ) {
 				suntaek_proc('list', '1', '');
-			} else if (value1 == 'saveProc' || value1 == 'ansProc') {
+			} else if (value1 == 'ansProc') {
 				suntaek_proc('answerCount', '', $("#span_no").text());
 			} else {
 				$("#result").html(data);

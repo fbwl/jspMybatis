@@ -277,6 +277,7 @@ public class MemberController extends HttpServlet {
 			String detailAddress = request.getParameter("detailAddress");
 			String extraAddress = request.getParameter("extraAddress");
 			String email = request.getParameter("email");
+			dto.setNo(no);
 			dto.setId(id);
 			dto.setPasswd(passwd);
 			dto.setName(name);

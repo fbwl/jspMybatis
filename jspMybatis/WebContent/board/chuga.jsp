@@ -45,13 +45,13 @@
 	</tr>
 	<tr>
 		<td style="align: center;">공지글</td>
-		<td><input type="text" name="noticeGubun" id="noticeGubun">
+		<td><input type="hidden" name="noticeGubun" id="noticeGubun">
 			<input type="checkbox" name="noticeGubunCheckBox" id="noticeGubunCheckBox" value="T"
 			onclick="clickChk('noticeGubun');">공지글 체크</td>
 	</tr>
 	<tr>
 		<td style="align: center;">비밀글</td>
-		<td><input type="text" name="secretGubun" id="secretGubun">
+		<td><input type="hidden" name="secretGubun" id="secretGubun">
 			<input type="checkbox" name="secretGubunCheckBox" id="secretGubunCheckBox" value="T"
 			onclick="clickChk('secretGubun');">비밀글 체크</td>
 	</tr>

@@ -25,12 +25,6 @@
 				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="3"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="4"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="5"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="6"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="7"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="8"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="9"></li>
 			</ol>
 			<!-- 실제 이미지 아이템 -->
 			<!-- class는 carousel-inner로 설정하고 role은 listbox에서 설정한다. -->
@@ -38,76 +32,41 @@
 				<!-- 이미지의 개수만큼 item을 만든다. 중요한 포인트는 carousel-indicators의 li 태그 개수와 item의 개수는 일치해야 한다. -->
 				<div class="item active">
 					<!-- 아미지 설정- -->
-					<img src="${path }/attach/image/board_static.gif" alt=""
-						data-animated="${path }/attach/image/board_animated.gif"
-						data-static="${path }/attach/image/board_static.gif"
+					<img src="${path }/attach/image/member_static.jpg" alt=""
+						data-animated="${path }/attach/image/member_animated.gif"
+						data-static="${path }/attach/image/member_static.jpg"
 						class="img-anim" style="width: 100%;">
 					<!-- 캡션 설정 (생략 가능) -->
 					<!-- 글자 색은 검은색 -->
 					<div class="carousel-caption" style="color: black;">회원관리</div>
 				</div>
 				<div class="item">
-					<img src="${path }/attach/image/board_static.gif" alt=""
+					<img src="${path }/attach/image/board_static.jpg" alt=""
 						data-animated="${path }/attach/image/board_animated.gif"
-						data-static="${path }/attach/image/board_static.gif"
-						class="img-anim" style="width: 100%;">
-					<div class="carousel-caption" style="color: black;">메모장</div>
-				</div>
-				<div class="item">
-					<img src="${path }/attach/image/board_static.gif" alt=""
-						data-animated="${path }/attach/image/board_animated.gif"
-						data-static="${path }/attach/image/board_static.gif"
-						class="img-anim" style="width: 100%;">
-					<div class="carousel-caption" style="color: black;">방명록</div>
-				</div>
-				<div class="item">
-					<img src="${path }/attach/image/board_static.gif" alt=""
-						data-animated="${path }/attach/image/board_animated.gif"
-						data-static="${path }/attach/image/board_static.gif"
-						class="img-anim" style="width: 100%;">
-					<div class="carousel-caption" style="color: black;">설문조사</div>
-				</div>
-				<div class="item">
-					<img src="${path }/attach/image/board_static.gif" alt=""
-						data-animated="${path }/attach/image/board_animated.gif"
-						data-static="${path }/attach/image/board_static.gif"
-						class="img-anim" style="width: 100%;">
-					<div class="carousel-caption" style="color: black;">설문지</div>
-				</div>
-				<div class="item">
-					<img src="${path }/attach/image/board_static.gif" alt=""
-						data-animated="${path }/attach/image/board_animated.gif"
-						data-static="${path }/attach/image/board_static.gif"
+						data-static="${path }/attach/image/board_static.jpg"
 						class="img-anim" style="width: 100%;">
 					<div class="carousel-caption" style="color: black;">게시판</div>
 				</div>
 				<div class="item">
-					<img src="${path }/attach/image/board_static.gif" alt=""
-						data-animated="${path }/attach/image/board_animated.gif"
-						data-static="${path }/attach/image/board_static.gif"
+					<img src="${path }/attach/image/shop_static.jpg" alt=""
+						data-animated="${path }/attach/image/shop_animated.gif"
+						data-static="${path }/attach/image/shop_static.jpg"
 						class="img-anim" style="width: 100%;">
-					<div class="carousel-caption" style="color: black;">상품관리</div>
+					<div class="carousel-caption" style="color: black;">상품관리, 쇼핑몰</div>
 				</div>
 				<div class="item">
-					<img src="${path }/attach/image/board_static.gif" alt=""
-						data-animated="${path }/attach/image/board_animated.gif"
-						data-static="${path }/attach/image/board_static.gif"
+					<img src="${path }/attach/image/chart_static.jpg" alt=""
+						data-animated="${path }/attach/image/chart_animated.gif"
+						data-static="${path }/attach/image/chart_static.jpg"
 						class="img-anim" style="width: 100%;">
-					<div class="carousel-caption" style="color: black;">쇼핑몰</div>
+					<div class="carousel-caption" style="color: black;">설문조사, 차트</div>
 				</div>
 				<div class="item">
-					<img src="${path }/attach/image/board_static.gif" alt=""
-						data-animated="${path }/attach/image/board_animated.gif"
-						data-static="${path }/attach/image/board_static.gif"
+					<img src="${path }/attach/image/email_static.jpg" alt=""
+						data-animated="${path }/attach/image/email_animated.gif"
+						data-static="${path }/attach/image/email_static.jpg"
 						class="img-anim" style="width: 100%;">
-					<div class="carousel-caption" style="color: black;">차트</div>
-				</div>
-				<div class="item">
-					<img src="${path }/attach/image/board_static.gif" alt=""
-						data-animated="${path }/attach/image/board_animated.gif"
-						data-static="${path }/attach/image/board_static.gif"
-						class="img-anim" style="width: 100%;">
-					<div class="carousel-caption" style="color: black;">계산기</div>
+					<div class="carousel-caption" style="color: black;">이메일 전송</div>
 				</div>
 			</div>
 			<!-- 왼쪽 화살표 버튼 -->

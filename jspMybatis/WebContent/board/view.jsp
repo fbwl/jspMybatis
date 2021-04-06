@@ -100,7 +100,9 @@
 			<tr>
 				<td colspan="2" height="50px" style="padding: 20 0 0 0;">
 					<a name="comment"></a>
-					commentPageNumber : <span id="span_commentPageNumber"></span><br>
+					<div style="display: none;">
+						commentPageNumber : <span id="span_commentPageNumber"></span><br>
+					</div>
 					<div id="CommentResult"></div>
 				</td>
 			</tr>

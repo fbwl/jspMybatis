@@ -102,7 +102,6 @@ function goPage(value1) {
 				}
 				chk_no += $(this).val();
 			});
-			alert(chk_no);
 			param.chk_no = chk_no;
 		} else {
 			return;
