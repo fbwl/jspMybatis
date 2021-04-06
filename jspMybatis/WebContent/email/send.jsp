@@ -7,13 +7,13 @@
 	<tr>
 		<td style="align: center;">발신자 이름</td>
 		<td>
-			<input type="text" name="fromName" id="fromName">
+			<input type="text" name="fromName" id="fromName" value="${sessionScope.cookName }">
 		</td>
 	</tr>
 	<tr>
 		<td style="align: center;">발신자 이메일</td>
 		<td>
-			<input type="text" name="fromEmail" id="fromEmail" value="${sesstionScope.cookEmail }">
+			<input type="text" name="fromEmail" id="fromEmail" value="${sessionScope.cookEmail }">
 		</td>
 	</tr>
 	<tr>

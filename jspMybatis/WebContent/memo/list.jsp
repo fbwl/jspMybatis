@@ -5,7 +5,7 @@
 <h2>메모장</h2>
 <table width="400">
 	<tr>
-		<td>이름 : <input type="text" id="writer" size="20" ><br>
+		<td>이름 : <input type="text" id="writer" size="20" value="${sessionScope.cookName }"><br>
 			내용 : <input type="text" id="content" size="35" ><br>
 		</td>
 	</tr>
